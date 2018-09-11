@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript { 
+    ext.kotlin_version = '1.2.61'
+
+    ext {
+        /* Library Project */
+        libMinSdkVersion = 14
+        libTargetSdkVersion = 26
+        libCompileSdkVersion = 27
+        libBuildToolsVersion = '27.0.3'
+
+        /* External Dependencies */
+        vJUnit = '4.12'
+        vSupportLibrary = '27.1.1'
+    }
+    repositories {
+        jcenter()
+        google()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+task prepare() {
+    subprojects { project ->
+        if (project.name.startsWith("bitsound")) {
+            new File("${project.buildDir}/outputs/aar").mkdirs()
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
