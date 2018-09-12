@@ -6,22 +6,22 @@
 
 1. Import the `.aar` file into Android project
 
-2. Import the `siggen` package in the target java source code
+2. Import the `siggen2` package in the target java source code
    ```
-   package io.bitsound.siggen;
-   ```
-
-3. Load the native library and create the siggenInterface instance
-
-   ```
-   RuntimeHelper.loadNativeLibrary(context, "siggen");
-   SiggenInterface siggen = new SiggenInterface();
+   package io.bitsound.siggen2;
    ```
 
-4. Init the `siggen` module
+3. Load the native library and create the Siggen2Interface instance
 
    ```
-   siggen.init(type, samplingRate);
+   RuntimeHelper.loadNativeLibrary(context, "siggen2");
+   Siggen2Interface siggen2 = new Siggen2Interface();
+   ```
+
+4. Init the `siggen2` module
+
+   ```
+   siggen2.init(type, samplingRate);
    ```
 
    > Currently, `type`=`13` is only supported. (2018. 09. 04.)
@@ -30,13 +30,13 @@
 
 5. Set the buffer for a single signal
    ```
-    int bufferSize = siggen.getPacketSize();
+    int bufferSize = siggen2.getPacketSize();
     short[] buffer = new short[bufferSize];
    ```
 
 6. Load the signal to the defined buffer
    ```
-    siggen.generateSignal(id, buffer, volume);
+    siggen2.generateSignal(id, buffer, volume);
    ```
 
    > `id` is the integer value of signal ID
@@ -44,15 +44,15 @@
    > `volume` is the digital volume level of the generated signal. The units are dBFs, and the default value is `-30`. The adequate value can vary depending on which smartphone device the program operates on.
 
 
-7. Release the `siggen` module
+7. Release the `siggen2` module
 
    ```
-   siggen.release();
+   siggen2.release();
    ```
 
 ## Example Code
 
-Please check out the provided test code `SiggenInterfaceTest.java`.
+Please check out the provided test code `Siggen2InterfaceTest.java`.
 
 ## APIs
 

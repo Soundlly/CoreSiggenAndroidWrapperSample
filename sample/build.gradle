@@ -38,6 +38,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    debugImplementation (name: "io.bitsound-debug-180911-ea82356", ext:'aar')
-    releaseImplementation (name: "io.bitsound-180911-ea82356", ext:'aar')
+    debugImplementation (name: "io.bitsound.siggen2-debug-180912-ea82356", ext:'aar')
+    releaseImplementation (name: "io.bitsound.siggen2-180912-ea82356", ext:'aar')
 }
